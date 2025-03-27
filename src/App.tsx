@@ -1,5 +1,7 @@
+import { Home } from "./pages/home";
+
 function App() {
-  return <>ProjetsJN</>;
+  return <Home />;
 }
 
 export default App;
