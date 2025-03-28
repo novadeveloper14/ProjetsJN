@@ -3,6 +3,7 @@ import p2 from "../assets/p2.png";
 import p3 from "../assets/p3.png";
 import p4 from "../assets/p4.png";
 import p5 from "../assets/p5.png";
+import p6 from "../assets/p6.png";
 
 export interface Project {
   id: number;
@@ -30,7 +31,7 @@ export const projects: Project[] = [
     image: p2,
     title: "Novalin",
     description: "Prototype of a video game sales application.",
-    tags: ["HTML", "CSS"],
+    tags: ["HTML", "CSS", "Teamwork"],
     repoUrl: "https://github.com/novadeveloper14/Novalin",
     demoUrl: "https://novadeveloper14.github.io/Novalin/index.html",
   },
@@ -41,7 +42,7 @@ export const projects: Project[] = [
     description: "Prototype of a personal portfolio.",
     tags: ["HTML", "CSS", "React", "Js", "TypeScript"],
     repoUrl: "https://github.com/novadeveloper14/PortafolioJN",
-    demoUrl: "",
+    demoUrl: "https://novadeveloper14.github.io/portfolio",
   },
   {
     id: 4,
@@ -59,6 +60,26 @@ export const projects: Project[] = [
     description: "Prototype of an application for selling sports products.",
     tags: ["HTML", "CSS"],
     repoUrl: "https://github.com/novadeveloper14/NovaSP",
+    demoUrl: "",
+  },
+  {
+    id: 6,
+    image: p6,
+    title: "Tejidos Rebanca CRUD",
+    description: "CRUD Final Technology Project for Tejidos Rebanca",
+    tags: [
+      "HTML",
+      "CSS",
+      "Js",
+      "PHP",
+      "Responsive",
+      "MySQL",
+      "Database",
+      "CRUD",
+      "Teamwork",
+      "Login",
+    ],
+    repoUrl: "https://github.com/novadeveloper14/tejidosRebanca-Login-CRUD",
     demoUrl: "",
   },
 ];
