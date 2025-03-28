@@ -4,19 +4,20 @@ import {
   FaFileDownload,
   FaWhatsapp,
 } from "react-icons/fa";
-
+import { SocialButton } from "../../components/SocialButton";
+import { Project } from "../../components/Project";
 import {
   StyledHomeContainer,
-  StyledH1Container,
-  StyledHeaderContainer,
-  StyledTextContainer,
-  StyledDescriptionContainer,
-  StyledImageContainer,
-  StyledDescriptionContainer2,
-  StyledDescriptionButton,
-  StyledContainerButtons,
+  StyledH1,
+  StyledHeader,
+  StyledHeroText,
+  StyledHeroContent,
+  StyledHeroImage,
+  StyledButtonGroup,
+  StyledMain,
 } from "./styles";
 import avatar from "../../assets/av.png";
+import { projects } from "../../data/projects.data";
 
 function Home() {
   const handleDownloadCV = () => {
@@ -30,58 +31,73 @@ function Home() {
 
   return (
     <StyledHomeContainer>
-      <StyledHeaderContainer>
-        <StyledH1Container>
+      <StyledHeader>
+        <StyledH1>
           Projects <span>JN</span>
-        </StyledH1Container>
-        <StyledDescriptionContainer>
-          <StyledDescriptionContainer2>
-            <StyledTextContainer>
+        </StyledH1>
+
+        <StyledHeroContent>
+          <div>
+            <StyledHeroText>
               Hello, I'm <span>Johan Nova</span>! I have worked on several web
               projects, utilizing a variety of <span>technologies</span> to
               build dynamic and efficient applications. Here are some of the
               projects I have <span>developed</span>.
-            </StyledTextContainer>
-            <StyledContainerButtons>
-              <StyledDescriptionButton
-                as="a"
+            </StyledHeroText>
+
+            <StyledButtonGroup>
+              <SocialButton
                 href="https://github.com/novadeveloper14"
-                target="_blank"
-                rel="noopener noreferrer"
+                icon={<FaGithub size={22} />}
               >
-                <FaGithub size={22} /> Follow me on Github
-              </StyledDescriptionButton>
-              <StyledDescriptionButton
-                as="a"
+                Follow me on Github
+              </SocialButton>
+
+              <SocialButton
                 href="https://www.linkedin.com/in/johan-daniel-garcia-nova-433b93252/"
-                target="_blank"
-                rel="noopener noreferrer"
+                icon={<FaLinkedin size={22} color="#0e76a8" />}
                 color="#0e76a8"
               >
-                <FaLinkedin size={22} color="#0e76a8" /> Follow me on Linkedin
-              </StyledDescriptionButton>
-              <StyledDescriptionButton
+                Follow me on Linkedin
+              </SocialButton>
+
+              <SocialButton
                 onClick={handleDownloadCV}
+                icon={<FaFileDownload size={22} color="#2d336b" />}
                 color="#2d336b"
               >
-                <FaFileDownload size={22} color="#2d336b" /> Download my CV
-              </StyledDescriptionButton>
-              <StyledDescriptionButton
-                as="a"
+                Download my CV
+              </SocialButton>
+
+              <SocialButton
                 href="https://wa.link/j7s06e"
-                target="_blank"
-                rel="noopener noreferrer"
+                icon={<FaWhatsapp size={22} color="#25d366" />}
                 color="#25d366"
               >
-                <FaWhatsapp size={22} color="#25d366" /> Contact me
-              </StyledDescriptionButton>
-            </StyledContainerButtons>
-          </StyledDescriptionContainer2>
-          <StyledImageContainer>
+                Contact me
+              </SocialButton>
+            </StyledButtonGroup>
+          </div>
+
+          <StyledHeroImage>
             <img src={avatar} alt="Johan Nova" />
-          </StyledImageContainer>
-        </StyledDescriptionContainer>
-      </StyledHeaderContainer>
+          </StyledHeroImage>
+        </StyledHeroContent>
+      </StyledHeader>
+
+      <StyledMain>
+        {projects.map((project, index) => (
+          <Project
+            key={index}
+            image={project.image}
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            demoUrl={project.demoUrl}
+            repoUrl={project.repoUrl}
+          />
+        ))}
+      </StyledMain>
     </StyledHomeContainer>
   );
 }

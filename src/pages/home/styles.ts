@@ -1,32 +1,50 @@
 import styled from "styled-components";
+import { theme, breakpoints } from "../../tokens/tokens";
 
-const StyledHomeContainer = styled.div`
+export const StyledHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, #a9b5df, #ffffff);
+  background: linear-gradient(to bottom, ${theme.colors.secondary}, #ffffff);
+  gap: 80px;
+  padding-bottom: 50px;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    gap: 150px;
+    padding-bottom: 100px;
+  }
 `;
 
-const StyledHeaderContainer = styled.header`
+export const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 110px;
-  width: 900px;
+  gap: 50px;
+  width: 90%;
+  max-width: ${theme.sizes.headerWidth};
+  padding: 0 20px;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    gap: 110px;
+    padding: 0;
+  }
 `;
 
-const StyledH1Container = styled.h1`
-  color: #2d336b;
+export const StyledH1 = styled.h1`
+  color: ${theme.colors.primary};
   text-align: center;
-  font-size: 70px;
-  margin-top: 200px;
+  font-size: 2.5rem;
+  margin-top: 100px;
+  padding: 0 15px;
 
-  & span {
-    padding: 10px;
-    background: linear-gradient(180deg, #a9b5df, #ffffff);
+  span {
+    padding: 8px;
+    background: linear-gradient(180deg, ${theme.colors.secondary}, #ffffff);
     border-radius: 10px;
     background-size: 200% 200%;
     animation: gradientShift 1s alternate;
+    font-size: 2.2rem;
+    display: inline-block;
   }
 
   @keyframes gradientShift {
@@ -40,90 +58,114 @@ const StyledH1Container = styled.h1`
       background-position: 50% 0%;
     }
   }
-`;
 
-const StyledTextContainer = styled.h1`
-  width: 600px;
-  color: #2d336b;
-  font-size: 20px;
+  @media (min-width: ${breakpoints.tablet}) {
+    font-size: 70px;
+    margin-top: 200px;
 
-  & span {
-    background-color: #a9b5df;
+    span {
+      padding: 10px;
+      font-size: 3.2rem;
+    }
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 2rem;
+    margin-top: 80px;
   }
 `;
 
-const StyledDescriptionContainer = styled.div`
-  display: flex;
-  gap: 70px;
+export const StyledHeroText = styled.p`
+  width: 100%;
+  max-width: 600px;
+  color: ${theme.colors.primary};
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 15px;
+
+  span {
+    background-color: ${theme.colors.secondary};
+  }
+
+  @media (min-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+    padding: 0;
+  }
 `;
 
-const StyledImageContainer = styled.div`
-  & img {
-    height: 250px;
-    width: 250px;
+export const StyledHeroContent = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 40px;
+  align-items: center;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    flex-direction: row;
+    gap: 70px;
+  }
+
+  & div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+`;
+
+export const StyledHeroImage = styled.div`
+  img {
+    height: auto;
+    width: 150px;
+    max-width: ${theme.sizes.imageSize};
     border-radius: 20px;
-    transform: rotate(5deg);
-    padding: 10px;
-    border: 5px solid #a9b5df;
+    padding: 8px;
+    border: 3px solid ${theme.colors.secondary};
     transition:
       transform 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out;
 
     &:hover {
-      transform: rotate(10deg) scale(1.03);
+      transform: scale(1.01);
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (min-width: ${breakpoints.tablet}) {
+      width: ${theme.sizes.imageSize};
+      padding: 10px;
+      border: 5px solid ${theme.colors.secondary};
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 150px;
     }
   }
 `;
 
-const StyledDescriptionContainer2 = styled.div`
+export const StyledButtonGroup = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;
-
-interface IStyledDescriptionButton {
-  color?: string;
-}
-
-const StyledDescriptionButton = styled.button<IStyledDescriptionButton>`
-  text-decoration: none;
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
-  min-width: 100px;
-  background-color: transparent;
-  border: 2px solid ${({ color }) => color || "black"};
-  color: black;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 1000;
-  font-size: 14px;
-  transition:
-    background-color 0.3s ease-in-out,
-    transform 0.2s ease-in-out;
+  margin-top: 15px;
 
-  &:hover {
-    background-color: ${({ color }) =>
-      color ? `${color}20` : "rgba(0, 0, 0, 0.2)"};
+  @media (min-width: ${breakpoints.tablet}) {
+    gap: 15px;
+    margin-top: 20px;
   }
 `;
 
-const StyledContainerButtons = styled.div`
+export const StyledMain = styled.main`
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-`;
+  gap: 30px;
+  width: 90%;
+  max-width: ${theme.sizes.containerWidth};
+  padding: 0 20px;
 
-export {
-  StyledHomeContainer,
-  StyledH1Container,
-  StyledHeaderContainer,
-  StyledTextContainer,
-  StyledDescriptionContainer,
-  StyledImageContainer,
-  StyledDescriptionContainer2,
-  StyledDescriptionButton,
-  StyledContainerButtons,
-};
+  @media (min-width: ${breakpoints.tablet}) {
+    gap: 40px;
+    padding: 0;
+  }
+
+  @media (max-width: 1422px) {
+    justify-content: center;
+  }
+`;
